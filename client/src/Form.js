@@ -42,7 +42,7 @@ const Form = (props) => {
 				{touched.username && errors.username && <p className="error">{errors.username}</p>}
                 </div>
                 <div>
-				<Field type="text" name="password" placeholder="Password" />
+				<Field type="text" name="password" data-testid="password" placeholder="Password" />
 				{touched.email && errors.email && <p className="error">{errors.email}</p>}
                 </div>
                 <div>

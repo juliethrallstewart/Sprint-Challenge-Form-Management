@@ -12,8 +12,21 @@ const Form = (props) => {
 	const [
 		users,
 		setUsers
-	] = useState([]);
+    ] = useState([]);
     
+    // useEffect(
+	// 	() => {
+	// 		status &&
+	// 			setUsers([
+	// 				...users,
+	// 				status
+	// 			]);
+	// 	},
+	// 	[
+	// 		status
+	// 	]
+	// );
+
     useEffect(
         () => {
             const getUsers = () => {
@@ -21,12 +34,17 @@ const Form = (props) => {
                 .then(res => {
                     setUsers(res.data)
                 })
+                .then(status &&
+                    setUsers([
+                        ...users,
+                        status
+                    ]))
                 .catch(e => {
                     console.log('Server error', e)
                 })
             };
             getUsers();
-        }, []
+        }, [status]
     );
 
 	console.log('this is the status', status);
@@ -75,6 +93,7 @@ const FormikUserForm = withFormik({
 	}),
 
 	handleSubmit (values, { setStatus }) {
+        console.log('Submit button clicked!')
 		axios
 			.post('http://localhost:5000/api/register', values)
 			.then((res) => {

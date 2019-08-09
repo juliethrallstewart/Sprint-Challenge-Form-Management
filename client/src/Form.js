@@ -13,19 +13,6 @@ const Form = (props) => {
 		users,
 		setUsers
 	] = useState([]);
-
-	// useEffect(
-	// 	() => {
-	// 		status &&
-	// 			setUser([
-	// 				...users,
-	// 				status
-	// 			]);
-	// 	},
-	// 	[
-	// 		status
-	// 	]
-    // );
     
     useEffect(
         () => {
@@ -51,7 +38,7 @@ const Form = (props) => {
 		<div className="user-form">
 			<FormikForm>
                 <div>
-				<Field type="text" name="username" placeholder="Name" />
+				<Field type="text" name="username" data-testid="username" placeholder="Name" />
 				{touched.username && errors.username && <p className="error">{errors.username}</p>}
                 </div>
                 <div>
@@ -59,7 +46,7 @@ const Form = (props) => {
 				{touched.email && errors.email && <p className="error">{errors.email}</p>}
                 </div>
                 <div>
-				<button type="submit">Submit!</button>
+				<button onClick={handleSubmit} type="submit">Submit!</button>
                 </div>
 			</FormikForm>
 		</div>

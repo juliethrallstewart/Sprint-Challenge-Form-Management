@@ -4,8 +4,8 @@ const Users = ({users}) => {
     return (
         <>
         <div className="user-list">
-        {users.map((item) => {
-                return <p>{item.username}</p>
+        {users.map((item, idx) => {
+                return <p key={idx}>{item.username}</p>
 			})}
         </div>
         </>
